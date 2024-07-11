@@ -32,3 +32,17 @@ if __name__ == "__main__":
     if data:
         print("JSON file loaded successfully.")
         print(data)
+
+def save_json(data, file_path):
+    try:
+        with open(file_path, 'w') as file:
+            json.dump(data, file, indent=4)
+        print(f"Data saved to {file_path}")
+    except Exception as e:
+        print(f"Error saving JSON file: {e}")
+
+if __name__ == "__main__":
+    args = parse_args()
+    data = load_json(args.input_file)
+    if data:
+        save_json(data, args.output_file)
